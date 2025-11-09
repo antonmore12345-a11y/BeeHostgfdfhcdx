@@ -1,0 +1,130 @@
+/* Общий стиль */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f4f6f8;
+  color: #222;
+}
+
+/* Шапка */
+header {
+  background: linear-gradient(90deg, #1e40af, #3b82f6);
+  color: #fff;
+  padding: 18px 20px;
+  text-align: center;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+
+/* Контейнер */
+.container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+/* Секции (экраны) */
+.screen {
+  display: none;
+}
+.screen.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Карточки */
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  transition: transform 0.2s;
+}
+.card:hover {
+  transform: scale(1.02);
+}
+
+/* Кнопки */
+.btn, .btn-ghost, .btn-buy {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 6px 4px;
+  font-size: 15px;
+  transition: background 0.2s, transform 0.2s;
+}
+.btn {
+  background: #1e40af;
+  color: #fff;
+}
+.btn:hover {
+  background: #3b82f6;
+  transform: translateY(-2px);
+}
+.btn-ghost {
+  background: #eee;
+  color: #1e40af;
+}
+.btn-ghost:hover {
+  background: #dbeafe;
+}
+.btn-buy {
+  background: #22c55e;
+  color: white;
+}
+.btn-buy:hover {
+  background: #16a34a;
+}
+
+/* Прогресс */
+.progress-wrap {
+  background: #ddd;
+  border-radius: 10px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+.progress {
+  height: 16px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #3b82f6, #1e40af);
+  width: 0%;
+  transition: width 0.4s;
+}
+
+/* Жизни */
+.hearts {
+  font-size: 24px;
+}
+
+/* Вопросы и ответы */
+.answers button {
+  display: block;
+  width: 100%;
+  margin: 6px 0;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+.answers button:hover {
+  background: #f3f4f6;
+}
+
+/* Код */
+pre {
+  background: #0f172a;
+  color: #e6eefc;
+  padding: 10px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Практика</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f9fafb; }
+    h1 { color: #1e40af; }
+    .progress-bar {
+      width: 100%;
+      background: #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 20px 0;
+    }
+    .progress {
+      height: 20px;
+      background: #3b82f6;
+      width: 0%;
+      transition: width 0.3s;
+    }
+    .hearts {
+      font-size: 24px;
+      color: red;
+      margin: 10px 0;
+    }
+    .question {
+      margin: 20px 0;
+    }
+    .btn {
+      display: inline-block;
+      margin: 5px;
+      padding: 10px 20px;
+      background: #1e40af;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn-buy {
+      background: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Практика: Основы Python</h1>
+
+  <div class="progress-bar">
+    <div id="progress" class="progress"></div>
+  </div>
+
+  <div class="hearts" id="hearts">❤️❤️❤️</div>
+
+  <div class="question" id="question"></div>
+
+  <button class="btn-buy" onclick="buyLife()">Купить жизнь</button>
+
+  <script>
+    let current = 0;
+    let lives = 3;
+    let questions = [
+      {
+        text: "Что выведет программа?\n\nx = 5\nif x > 3:\n    print('Да')",
+        answers: ["Да", "Нет"],
+        correct: 0
+      },
+      {
+        text: "Какое значение у переменной y?\n\ny = 2 + 3",
+        answers: ["2", "3", "5"],
+        correct: 2
+      },
+      {
+        text: "Что делает цикл for i in range(3)?",
+        answers: ["Выполнит 3 раза", "Выполнит 1 раз", "Ошибка"],
+        correct: 0
+      }
+    ];
+
+    function renderQuestion() {
+      if (current >= questions.length) {
+        document.getElementById("question").innerHTML = "<h2>Поздравляем! 🎉 Вы прошли практику!</h2>";
+        document.getElementById("progress").style.width = "100%";
+        return;
+      }
+
+      let q = questions[current];
+      let html = "<h3>" + q.text + "</h3>";
+      q.answers.forEach((a, i) => {
+        html += `<button class="btn" onclick="checkAnswer(${i})">${a}</button>`;
+      });
+      document.getElementById("question").innerHTML = html;
+
+      let percent = (current / questions.length) * 100;
+      document.getElementById("progress").style.width = percent + "%";
+    }
+
+    function checkAnswer(i) {
+      if (i === questions[current].correct) {
+        current++;
+        renderQuestion();
+      } else {
+        lives--;
+        updateHearts();
+        if (lives <= 0) {
+          document.getElementById("question").innerHTML = "<h2>Игра окончена 💀 Попробуйте снова!</h2>";
+        }
+      }
+    }
+
+    function updateHearts() {
+      let hearts = "";
+      for (let i = 0; i < lives; i++) {
+        hearts += "❤️";
+      }
+      document.getElementById("hearts").innerHTML = hearts;
+    }
+
+    function buyLife() {
+      lives++;
+      updateHearts();
+    }
+
+    // Запускаем первый вопрос
+    renderQuestion();
+  </script>
+
+</body>
+</html>
+

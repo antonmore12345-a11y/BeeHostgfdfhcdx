@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<header>
+  <h1>курсы антона шевченка лена ето мой сайт</h1></header>
+
+<main class="container">
+  <!-- ЛЕНДИНГ -->
+  <section id="landingScreen" class="screen active">
+    <div class="card">
+      <h2>Добро пожаловать!</h2>
+      <p>Наши курсы помогут вам с нуля освоить популярные языки программирования.</p>
+      <ul>
+        <li>🐍 Python — лёгкий для старта</li>
+        <li>⚡ JavaScript — язык веба</li>
+        <li>💻 C++ — для сложных проектов</li>
+      </ul>
+      <button class="btn" onclick="goToCourses()">Начать обучение</button>
+    </div>
+  </section>
+
+  <!-- ВЫБОР КУРСА -->
+  <section id="coursesScreen" class="screen">
+    <h2>Выберите курс</h2>
+    <div class="card">
+      <h3>🐍 Python</h3>
+      <p>Основы Python: переменные, условия, циклы</p>
+      <button class="btn" onclick="startLesson('python')">Перейти</button>
+    </div>
+    <div class="card">
+      <h3>⚡ JavaScript</h3>
+      <p>Основы JS: переменные, функции, циклы</p>
+      <button class="btn" onclick="startLesson('js')">Перейти</button>
+    </div>
+    <div class="card">
+      <h3>💻 C++</h3>
+      <p>Основы C++: переменные, условия, циклы</p>
+      <button class="btn" onclick="startLesson('cpp')">Перейти</button>
+    </div>
+    <button class="btn-ghost" onclick="goLanding()">⬅ На главную</button>
+  </section>
+
+  <!-- ОБУЧЕНИЕ -->
+  <section id="lessonScreen" class="screen">
+    <div class="card">
+      <h2 id="lessonTitle">Урок</h2>
+      <div id="lessonContent"></div>
+      <button class="btn" onclick="startPractice()">Перейти к практике</button>
+      <button class="btn-ghost" onclick="goLanding()">Выйти</button>
+    </div>
+  </section>
+
+  <!-- ПРАКТИКА -->
+  <section id="practiceScreen" class="screen">
+    <div class="card">
+      <div class="flex">
+        <h2 id="practiceTitle">Практика</h2>
+        <button class="btn-ghost right" onclick="goLanding(true)">Выйти и начать заново</button>
+      </div>
+
+      <div class="progress-wrap"><div id="progress" class="progress"></div></div>
+      <p>Пройдено: <span id="progressText">0</span>/<span id="totalText">0</span></p>
+
+      <div class="flex">
+        <div><div class="hearts" id="hearts">❤️❤️❤️</div> Жизни: <span id="livesCount">3</span></div>
+        <div>💵 Баланс: <span id="moneyCount">0</span> $</div>
+      </div>
+      <button id="buyLifeBtn" class="btn-buy">Купить жизнь (100 $)</button>
+      <button id="buyLifeBtn" class="btn-buy">пополни Баланс</button>
+      
+      
+      <div id="questionArea" style="margin-top:16px"></div>
+    </div>
+  </section>
+</main>
+<button id="buyLifeBtn" class="btn-buy">уже скоро 10.10.2025</button>
+
+<div id="msg" style="display:none; 
+                     background:#333; 
+                     color:#fff; 
+                     padding:10px; 
+                     border-radius:5px; 
+                     text-align:center;">
+  Это временное сообщение
+</div>
+
+<script>
+  // показать сообщение
+  document.getElementById("msg").style.display = "block";
+
+  // скрыть через 3 секунды
+  setTimeout(() => {
+    document.getElementById("msg").style.display = "none";
+  }, 3000);
+</script>
+
+
+<script src="index.js"></script>
+</body>
+</html>
+
+
+
